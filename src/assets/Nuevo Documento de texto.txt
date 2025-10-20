@@ -1,0 +1,11 @@
+mirar tutorial de frebae
+
+mirar cuenta de Google analitycs
+
+json webtokens para pasword
+
+para autenticación en firebase elegir la misma cuenta con la que te has dado de alta
+
+con ctrl+c detenemos la aplicación si se esta instalando mal
+
+mirar ion toolbar para la barra de busqueda

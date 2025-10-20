@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">login</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+
+    <h1>Login</h1>
+
+    <h2>Bienvenido a la página de login</h2>
+
+    <form [formGroup]="loginForm">
+
+      <ion-input label="Usuario:" formControlName="email" label-placement="floating" fill="outline" placeholder="Introduce tu email"></ion-input>
+
+      <br>
+
+      <ion-input label="Password:" type="password" formControlName="password" label-placement="floating" fill="outline" placeholder="Introduce un mínimo de 6 caracteres"></ion-input>
+
+      <br>
+
+      <ion-button type="button" (click)="login()">Login</ion-button><br/>
+      <ion-button type="button" (click)="register()">Register</ion-button>
+
+    </form>
+
+  </ion-content>
+
+</ion-content>
+

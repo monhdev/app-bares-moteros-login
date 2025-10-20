@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Lugares
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <h6> Bares, restaurantes y pubs</h6>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list >
+    @for (bar of bares; track $index){
+        <ion-card>
+        <div class="container">
+          <div class="foto">
+            <img [src]="bar.imagen" alt="{{ bar.nombre }}">
+          </div>
+        <div class="info">
+          <h2>{{ bar.nombre }}</h2>
+
+          <div class="cercania">
+            <p>Tel:<a href="tel:+34{{ bar.telefono }}"> {{ bar.telefono }}</a></p>
+            <p>Valoración: {{ bar.valoracion }} / 5</p>
+          </div>
+
+          <div class="descripcion">
+            <p>{{ bar.descripcion }}</p></div>
+          <p>{{ bar.direccion }}</p>
+        </div>
+        <!--<div class="ValoracionMapa">★-->
+
+          <div class="mapa">
+            <ion-button color="dark">
+              <ion-icon aria-hidden="true" name="location-outline"> </ion-icon>
+              <a [href]="bar.mapa" target="_blank">Ver en mapa</a>
+            </ion-button>
+          </div>
+        </div></ion-card>
+
+      <!--</div>-->
+    }
+  </ion-list>
+
+</ion-content>

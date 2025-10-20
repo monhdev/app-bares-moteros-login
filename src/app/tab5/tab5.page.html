@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Logout</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="profile-container" style="text-align: center; margin-top: 40px;">
+    <ion-avatar *ngIf="userPhoto; else noPhoto" (click)="showActionSheet()" style="width: 120px; height: 120px; margin: auto;">
+      <img [src]="userPhoto.webviewPath">
+    </ion-avatar>
+
+    <ng-template #noPhoto>
+      <ion-avatar style="width: 120px; height: 120px; margin: auto;">
+        <img src="assets/default-avatar.png">
+      </ion-avatar>
+    </ng-template>
+
+    <!-- Webcam solo si showWebcam=true -->
+    <div *ngIf="showWebcam && !platform.is('hybrid')" style="text-align:center; margin-top:20px;">
+      <video #video width="250" autoplay muted style="border-radius:10px; border:1px solid #ccc;"></video>
+      <br>
+      <ion-button (click)="captureWebPhoto()">Capturar foto</ion-button>
+    </div>
+
+    <!-- Botones para imagen y cámara -->
+    <div style="margin-top: 20px; display: flex; justify-content: center; gap: 16px;">
+      <ion-fab-button size="small" color="light" (click)="changeImage()" style="--background:white;">
+        <ion-icon name="image-outline"></ion-icon>
+      </ion-fab-button>
+
+      <ion-fab-button size="small" color="light" (click)="takePhoto()" style="--background:white;">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+    </div>
+  </div>
+
+  <!-- Formulario de perfil -->
+  <form [formGroup]="profileForm" style="margin: 20px;" *ngIf="profileForm">
+    <ion-item>
+      <ion-label>Nombre:</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-item>
+      <ion-label>Moto:</ion-label>
+      <ion-input formControlName="moto"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-item>
+      <ion-label>Email:</ion-label>
+      <ion-input formControlName="email"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-button expand="full" type="button" (click)="saveProfile()">Guardar perfil</ion-button>
+  </form>
+</ion-content>
