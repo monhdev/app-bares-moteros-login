@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
   IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonIcon,
-  IonItem, IonLabel, IonAvatar, IonInput, IonFabButton, Platform, AlertController, LoadingController
-} from '@ionic/angular/standalone';
+  IonItem, IonLabel, IonAvatar, IonInput, IonFabButton, Platform, AlertController, LoadingController, IonChip, IonNote } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { Auth } from '@angular/fire/auth';
 import { UserService } from 'src/app/services/user.service';
@@ -13,12 +12,12 @@ import { AvatarService } from 'src/app/services/avatar.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { addIcons } from 'ionicons';
-import { camera, imageOutline, personOutline, mailOutline, bicycleOutline } from 'ionicons/icons';
+import { camera, imageOutline, personOutline, mailOutline, personCircleOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-tab5',
   standalone: true,
-  imports: [
+  imports: [IonNote, 
     IonFabButton, IonInput, IonAvatar, IonLabel, IonItem, IonButton,
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar,
     CommonModule, FormsModule, ReactiveFormsModule, IonIcon
@@ -49,7 +48,7 @@ export class Tab5Page {
   userPhoto: { webviewPath: string } | null = null;
 
   constructor() {
-    addIcons({ camera, imageOutline, personOutline, mailOutline, bicycleOutline });
+    addIcons({ camera, imageOutline, personOutline, mailOutline, personCircleOutline });
   }
 
   ngOnInit() {
@@ -72,6 +71,7 @@ export class Tab5Page {
     this.profileForm = new FormGroup({
       email: new FormControl(this.user.email, [Validators.required, Validators.email]),
       nombre: new FormControl(this.user.nombre || ''),
+      nickname: new FormControl(this.user.nickname || ''), // ✅ Nuevo campo
       moto: new FormControl(this.user.moto || '')
     });
   }
@@ -80,10 +80,10 @@ export class Tab5Page {
     if (this.profileForm.valid) {
       const updatedUser: IUser = { ...this.user, ...this.profileForm.value };
       this.userService.updateUser(updatedUser).then(() => {
-        console.log('User updated successfully');
-      });
+        console.log('Perfil actualizado correctamente');
+      }).catch(err => console.error('Error actualizando perfil:', err));
     } else {
-      console.log('Form is invalid');
+      console.log('Formulario inválido');
     }
   }
 

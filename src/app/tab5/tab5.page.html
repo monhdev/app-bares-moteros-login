@@ -53,6 +53,12 @@
     <br>
 
     <ion-item>
+      <ion-label>Nickname:</ion-label>
+      <ion-input formControlName="nickname"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-item>
       <ion-label>Moto:</ion-label>
       <ion-input formControlName="moto"></ion-input>
     </ion-item>
@@ -62,8 +68,21 @@
       <ion-label>Email:</ion-label>
       <ion-input formControlName="email"></ion-input>
     </ion-item>
+    <ion-note color="medium">* El email no se puede modificar.</ion-note>
     <br>
 
-    <ion-button expand="full" type="button" (click)="saveProfile()">Guardar perfil</ion-button>
+    <ion-button
+    expand="block"
+    color="tertiary"
+    shape="round"
+    fill="solid"
+    size="large"
+    strong="true"
+    (click)="saveProfile()"
+    style="--border-radius:20px; margin-top:10px;"
+  >
+    <ion-icon slot="start" name="save-outline"></ion-icon>
+    Guardar perfil
+    </ion-button>
   </form>
 </ion-content>

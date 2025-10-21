@@ -21,6 +21,7 @@ export class AuthService {
 
       const myUser: IUser = {
 				nombre: '',
+        nickname: '',
 				email: user.user.email || '',
 				avatar: '',
         moto: ''

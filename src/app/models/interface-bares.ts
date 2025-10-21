@@ -12,6 +12,7 @@ export interface InterfaceBares {
 export interface IUser {
   id?: string;
   nombre: string;
+  nickname: string;
   moto?: string;
   email: string;
   avatar: string;
