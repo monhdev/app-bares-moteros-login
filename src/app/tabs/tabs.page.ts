@@ -4,6 +4,8 @@ import { addIcons } from 'ionicons';
 import { triangle, ellipse, square } from 'ionicons/icons';
 import { IonHeader, IonToolbar } from '@ionic/angular/standalone';
 import { library, playCircle, radio, search, locationOutline, peopleCircleOutline, calendarClearOutline, personOutline } from 'ionicons/icons';
+import { PushService } from 'src/app/services/push.service';
+
 
 @Component({
   selector: 'app-tabs',
@@ -13,11 +15,18 @@ import { library, playCircle, radio, search, locationOutline, peopleCircleOutlin
 })
 export class TabsPage {
   public environmentInjector = inject(EnvironmentInjector);
-
+  pushService: PushService = inject(PushService);
 
 
   constructor() {
     addIcons({ triangle, ellipse, square, library, playCircle, radio, search, locationOutline, peopleCircleOutline, calendarClearOutline, personOutline });
+    if (Capacitor.isNativePlatform()) {
+      this.pushService.registerNotifications().then(() => {
+        this.pushService.addListeners();
+      }).catch(err => {
+        console.error('Error registering for push notifications', err);
+      });
+    }
   }
 }
 
