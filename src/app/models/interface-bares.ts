@@ -16,4 +16,5 @@ export interface IUser {
   moto?: string;
   email: string;
   avatar: string;
+  pushToken?: string;
 }

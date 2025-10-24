@@ -1,6 +1,5 @@
 import { inject, Injectable } from '@angular/core';
 import { PushNotifications } from '@capacitor/push-notifications';
-import { IUser } from '../models/interface-bares';
 import { UserService } from './user.service';
 import { Auth } from '@angular/fire/auth';
 
@@ -17,7 +16,7 @@ export class PushService {
   async addListeners() {
     await PushNotifications.addListener('registration', token => {
       console.info('Registration token: ', token.value);
-      // this.updatePushToken(token.value);
+      this.updatePushToken(token.value);
     });
 
     await PushNotifications.addListener('registrationError', err => {
@@ -52,7 +51,7 @@ export class PushService {
     console.log('delivered notifications', notificationList);
   }
 
-  /*
+  
   async updatePushToken(token: string) {
     this.userService.getUserById(this.auth.currentUser?.uid!).subscribe(user => {
       console.log('User retrieved: ', user);
@@ -60,5 +59,5 @@ export class PushService {
       this.userService.updateUser(user!);
     });
   }
-  */
+  
 }
