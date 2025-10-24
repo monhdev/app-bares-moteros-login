@@ -13,6 +13,8 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { addIcons } from 'ionicons';
 import { logoIonic, logOutOutline } from 'ionicons/icons';
 import { environment } from './environments/environment';
+import { isDevMode } from '@angular/core';
+import { provideServiceWorker } from '@angular/service-worker';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -26,7 +28,10 @@ bootstrapApplication(AppComponent, {
     UserTrackingService, 
     provideFirestore(() => getFirestore()), 
     provideMessaging(() => getMessaging()), 
-    provideStorage(() => getStorage()),
+    provideStorage(() => getStorage()), provideServiceWorker('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            registrationStrategy: 'registerWhenStable:30000'
+          }),
   ],
 });
 
