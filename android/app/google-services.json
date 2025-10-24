@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "874125872511",
+    "project_id": "app-bares-moteros",
+    "storage_bucket": "app-bares-moteros.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874125872511:android:2e41c33f9d2734934f5e4a",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874125872511-mo8ibjr0b2179vkp1gjmtscrcjjpb5op.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzillk_rTPlp4co7vz4qwAq97uRwWVu4Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874125872511-mo8ibjr0b2179vkp1gjmtscrcjjpb5op.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

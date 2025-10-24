@@ -5,6 +5,7 @@ import { triangle, ellipse, square } from 'ionicons/icons';
 import { IonHeader, IonToolbar } from '@ionic/angular/standalone';
 import { library, playCircle, radio, search, locationOutline, peopleCircleOutline, calendarClearOutline, personOutline } from 'ionicons/icons';
 import { PushService } from 'src/app/services/push.service';
+import { Capacitor } from '@capacitor/core';
 
 
 @Component({
