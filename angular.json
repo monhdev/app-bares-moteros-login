@@ -33,6 +33,11 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "public",
+                "output": "public/"
               }
             ],
             "styles": ["src/global.scss", "src/theme/variables.scss"],
@@ -110,8 +115,14 @@
               },
               {
                 "glob": "**/*",
+                "input": "public",
+                "output": "public/"
+              },
+              {
+                "glob": "**/*",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
-                "output": "./svg"}
+                "output": "./svg"
+              }
             ],
             "styles": ["src/global.scss", "src/theme/variables.scss"],
             "scripts": []
