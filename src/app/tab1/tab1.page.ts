@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonThumbnail, IonLabel, IonButtons, IonCard } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { InterfaceBares } from '../models/interface-bares';
 import { locateOutline, locationOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-tab1',
@@ -12,6 +14,12 @@ import { addIcons } from 'ionicons';
   imports: [IonCard, IonButtons, IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, IonList],
 })
 export class Tab1Page {
+
+  authService = inject(AuthService);
+
+      logout() {
+      this.authService.logout();
+    }
 
 bares: InterfaceBares[] = [
     {
@@ -59,9 +67,5 @@ bares: InterfaceBares[] = [
   constructor() {
     addIcons({ locationOutline})
   }
-      authService: any;
 
-      logout() {
-      this.authService.logout();
-    }
 }

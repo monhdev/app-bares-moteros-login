@@ -24,6 +24,7 @@
     "@angular/router": "^20.3.7",
     "@angular/service-worker": "^20.3.7",
     "@capacitor/android": "^7.4.3",
+    "@capacitor/angular": "^2.0.3",
     "@capacitor/app": "7.0.2",
     "@capacitor/camera": "^7.0.2",
     "@capacitor/core": "^7.4.3",

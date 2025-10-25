@@ -1,0 +1,77 @@
+<!-- forum.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Foro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Sección para crear nuevo post -->
+  <ion-card *ngIf="currentUser$ | async as user" class="create-post-card">
+    <ion-card-content>
+      <div class="user-info">
+        <ion-avatar>
+          <img [src]="user.avatar" alt="avatar">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ user.nombre }}</h2>
+        </ion-label>
+      </div>
+
+      <ion-item lines="none">
+        <ion-textarea
+          [(ngModel)]="newPostText"
+          placeholder="¿Qué estás pensando?"
+          rows="4"
+          [disabled]="isSubmitting"
+        ></ion-textarea>
+      </ion-item>
+
+      <ion-button
+        expand="block"
+        (click)="submitPost()"
+        [disabled]="!newPostText.trim() || isSubmitting"
+      >
+        <ion-icon name="send" slot="start"></ion-icon>
+        {{ isSubmitting ? 'Publicando...' : 'Publicar' }}
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Mensaje si no hay usuario autenticado -->
+  <ion-card *ngIf="!(currentUser$ | async)">
+    <ion-card-content>
+      <p>Debes iniciar sesión para publicar en el foro</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Lista de posts -->
+  <div class="posts-container">
+    <h3 class="posts-title">Publicaciones</h3>
+
+    <ion-card *ngFor="let post of posts$ | async" class="post-card">
+      <ion-card-content>
+        <div class="post-header">
+          <ion-avatar>
+            <img [src]="post.avatar" alt="avatar">
+          </ion-avatar>
+          <div class="post-info">
+            <h3>{{ post.nombre }}</h3>
+            <p class="post-time">{{ getTimeAgo(post.fecha) }}</p>
+          </div>
+        </div>
+
+        <div class="post-content">
+          <p>{{ post.texto }}</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Mensaje si no hay posts -->
+    <ion-card *ngIf="(posts$ | async)?.length === 0">
+      <ion-card-content>
+        <p class="no-posts">No hay publicaciones aún. ¡Sé el primero en publicar!</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

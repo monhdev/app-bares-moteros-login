@@ -1,0 +1,94 @@
+// forum.page.scss
+.create-post-card {
+  margin: 16px;
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+
+    ion-avatar {
+      width: 50px;
+      height: 50px;
+    }
+
+    h2 {
+      margin: 0;
+      font-weight: 600;
+      color: var(--ion-text-color);
+    }
+  }
+
+  ion-textarea {
+    --padding-start: 0;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+  }
+
+  ion-button {
+    margin-top: 12px;
+  }
+}
+
+.posts-container {
+  padding: 0 16px 16px;
+
+  .posts-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 16px 0;
+    color: var(--ion-text-color);
+  }
+}
+
+.post-card {
+  margin-bottom: 16px;
+
+  .post-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+
+    ion-avatar {
+      width: 45px;
+      height: 45px;
+    }
+
+    .post-info {
+      flex: 1;
+
+      h3 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--ion-text-color);
+      }
+
+      .post-time {
+        margin: 2px 0 0;
+        font-size: 12px;
+        color: var(--ion-color-medium);
+      }
+    }
+  }
+
+  .post-content {
+    padding-left: 57px;
+
+    p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--ion-text-color);
+      white-space: pre-wrap;
+    }
+  }
+}
+
+.no-posts {
+  text-align: center;
+  color: var(--ion-color-medium);
+  font-style: italic;
+}
