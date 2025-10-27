@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // necesario para *ngIf
+import { CommonModule } from '@angular/common';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { SplashComponent } from './splash/splash.component';
+import { addIcons } from 'ionicons';
+import { send } from 'ionicons/icons';
+
+// Registramos iconos que vamos a usar
+addIcons({
+  send,
+});
 
 @Component({
   selector: 'app-root',
@@ -22,7 +29,6 @@ export class AppComponent {
   showSplash = true;
 
   constructor(private router: Router) {
-    // Ocultamos el splash después de 4 segundos
     setTimeout(() => {
       this.showSplash = false;
       this.router.navigateByUrl('/login'); // o '/home'

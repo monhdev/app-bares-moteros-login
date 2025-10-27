@@ -1,0 +1,12 @@
+.login-content {
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;     /* centra verticalmente */
+  --background: #f0f2f5;   /* fondo claro */
+  height: 100%;
+}
+
+.login-wrapper {
+  width: 90%;
+  max-width: 400px;  /* evita que sea muy ancho en pantallas grandes */
+}
