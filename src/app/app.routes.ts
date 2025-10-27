@@ -11,8 +11,8 @@ export const routes: Routes = [
     ...canActivate(redirectUnauthorizedToLogin),
   },
   {
-     path: 'login',
-    loadComponent: () => import('./public/login/login.page').then( m => m.LoginPage),
+    path: 'login',
+    loadComponent: () => import('./public/login/login.page').then(m => m.LoginPage),
     ...canActivate(redirectLoggedInToHome),
   },
 ];
