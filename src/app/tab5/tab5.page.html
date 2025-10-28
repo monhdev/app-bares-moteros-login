@@ -85,4 +85,9 @@
     Guardar perfil
     </ion-button>
   </form>
+
+  <ion-item>
+    <ion-toggle [(ngModel)]="paletteToggle" (ionChange)="toggleChange($event)" justify="space-between">Dark Mode</ion-toggle>
+  </ion-item>
+
 </ion-content>

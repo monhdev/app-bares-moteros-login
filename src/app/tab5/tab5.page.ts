@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
@@ -25,7 +25,7 @@ import { camera, imageOutline, personOutline, mailOutline, personCircleOutline }
   templateUrl: './tab5.page.html',
   styleUrls: ['./tab5.page.scss']
 })
-export class Tab5Page {
+export class Tab5Page implements OnInit {
 
   router = inject(Router);
   userService = inject(UserService);
@@ -39,6 +39,8 @@ export class Tab5Page {
   profileForm!: FormGroup;
   user!: IUser;
 
+  paletteToggle = false;
+
   // Webcam y preview
   showWebcam = false;
   @ViewChild('video', { static: false }) videoRef!: ElementRef<HTMLVideoElement>;
@@ -49,10 +51,6 @@ export class Tab5Page {
 
   constructor() {
     addIcons({ camera, imageOutline, personOutline, mailOutline, personCircleOutline });
-  }
-
-  ngOnInit() {
-    this.getUserInfo();
   }
 
   logout() {
@@ -188,5 +186,28 @@ export class Tab5Page {
       ]
     });
     await actionSheet.present();
+  }
+
+  ngOnInit() {
+
+    this.getUserInfo();
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    this.initializeDarkPalette(prefersDark.matches);
+
+    prefersDark.addEventListener('change', (mediaQuery) => this.initializeDarkPalette(mediaQuery.matches));
+  }
+
+  initializeDarkPalette(isDark: boolean) {
+    this.paletteToggle = isDark;
+    this.toggleDarkPalette(isDark);
+  }
+
+  toggleChange(event: CustomEvent) {
+    this.toggleDarkPalette(event.detail.checked);
+  }
+  
+  toggleDarkPalette(shouldAdd: boolean) {
+    document.documentElement.classList.toggle('ion-palette-dark', shouldAdd);
   }
 }
